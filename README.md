@@ -23,3 +23,9 @@
    10. create route for /api/products
    11. return products
    12. run npm start
+7. Fetch Products From backend
+   1. set proxy in package.json
+   2. npm install axios
+   3. use state hook
+   4. use effect hook
+   5. use reducer hook
