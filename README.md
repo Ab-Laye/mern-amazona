@@ -6,7 +6,7 @@
 2. Create react app
 3. create Git repository
 4. Liste des produits
-5. Ajouter un page de routage
+5. Ajouter un page de route
    1. npm i create-router-dom
    2. create route for home screen
    3. create route for product screen
