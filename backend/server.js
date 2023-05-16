@@ -2,7 +2,7 @@ import express from 'express';
 import data from './data.js';
 // test
 const app = express();
-app.get('/api/product', (req, res) => {
+app.get('/api/products', (req, res) => {
   res.send(data.products);
 });
 
