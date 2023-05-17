@@ -29,3 +29,7 @@
    3. use state hook
    4. use effect hook
    5. use reducer hook
+8. Manage State By Reducer Hook
+   1. definie reducer
+   2. upate fetch data
+   3. get state from usReducer
