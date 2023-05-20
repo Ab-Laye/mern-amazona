@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-//import data from '../data';
+
 import axios from 'axios';
-import { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import logger from 'use-reducer-logger';
 
 const reducer = (state, action) => {
@@ -29,11 +29,11 @@ function HomeScreen() {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const result = await axios.get('/api/products');
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+        dispatch({ type: 'FETCH_SUCCESS', playload: result.data });
       } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+        dispatch({ type: 'FETCH_FAIL', playload: err.message });
       }
-      //  setProducts(result.data);
+      //setProducts(result.data);
     };
     fetchData();
   }, []);
@@ -41,30 +41,22 @@ function HomeScreen() {
     <div>
       <h1>Featured Products</h1>
       <div className="products">
-        {loading ? (
-          <div>Loading...</div>
-        ) : error ? (
-          <div>{error}</div>
-        ) : (
-          products.map((product) => (
-            <div className="product" key={product.slug}>
+        {products.map((product) => (
+          <div className="product" key={product.slug}>
+            <Link to={`/product/${product.slug}`}>
+              <img src={product.images} alt={product.name} />
+            </Link>
+            <div className="product-info">
               <Link to={`/product/${product.slug}`}>
-                <img src={product.images} alt={product.name} />
+                <p>{product.name}</p>
               </Link>
-              <div className="product-info">
-                <Link to={`/product/${product.slug}`}>
-                  <p>{product.name}</p>
-                </Link>
-                <p>
-                  <strong>{product.price}Dt</strong>
-                </p>
-                <button>Ajouter au panier</button>
-              </div>
+              <p>{product.price}Dt</p>
             </div>
-          ))
-        )}
+          </div>
+        ))}
       </div>
     </div>
   );
 }
+
 export default HomeScreen;
