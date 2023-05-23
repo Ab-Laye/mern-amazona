@@ -40,3 +40,6 @@ main {
 .img-large {
   max-width: 100%;
 }
+img-thumbbnail {
+  weight: 80px;
+}

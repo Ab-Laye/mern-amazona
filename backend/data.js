@@ -16,8 +16,8 @@ const data = {
 
     {
       _id: '2',
-      name: 'Nike fit shirt',
-      slug: 'Nike-fit-shirt',
+      name: 'Adidas fit shirt',
+      slug: 'Adidas-fit-shirt',
       category: 'Shirts',
       images: '/images/p2.jpg',
       price: 120,
@@ -34,8 +34,8 @@ const data = {
       slug: 'nike-fit-pant',
       category: 'Shirts',
       images: '/images/p3.jpg',
-      price: 25,
-      countInStock: 20,
+      price: 250,
+      countInStock: 0,
       brand: 'Adidas',
       rating: 4.0,
       numReviews: 10,
