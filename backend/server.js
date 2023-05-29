@@ -4,6 +4,7 @@ import productRouter from './routes/ProductRoutes.js';
 import mongoose from 'mongoose';
 import express from 'express';
 import seedRoute from './routes/seedRoutes.js';
+import seedRouter from './routes/seedRoutes.js';
 
 dotenv.config();
 
