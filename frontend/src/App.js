@@ -49,12 +49,12 @@ function App() {
                   )}
                 </Link>
                 {userInfo ? (
-                  <nav title={userInfo.name} id="basic-nav-dropdown">
+                  <navDropdown title={userInfo.name} id="basic-nav-dropdown">
                     <LinkContainer to="/profile">
-                      <b>Profil utilisateur</b>
+                      <navDropdown.Item>Profil utilisateur</navDropdown.Item>
                     </LinkContainer>
                     <LinkContainer to="/orderhistory">
-                      <b>recents</b>
+                      <navDropdown.Item>recents</navDropdown.Item>
                     </LinkContainer>
                     <div>
                       <Link
@@ -65,7 +65,7 @@ function App() {
                         Se deconnecter
                       </Link>
                     </div>
-                  </nav>
+                  </navDropdown>
                 ) : (
                   <Link className="nav-Link" to="/signin">
                     Se Connecter
