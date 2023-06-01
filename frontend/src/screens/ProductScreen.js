@@ -57,16 +57,19 @@ function ProductScreen() {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
-    //console.log(data);
+    console.log(data);
+    console.log(quantity);
+    window.alert(data.countInStock);
+
     if (data.countInStock < quantity) {
-      return;
+      window.alert('Desolé, Produit en rupture de stock');
+    } else {
+      ctxDispatch({
+        type: 'CART_ADD_ITEM',
+        payload: { ...product, quantity },
+      });
+      Navigate('/Cart');
     }
-    window.alert('Desolé, Produit en rupture de stock');
-    ctxDispatch({
-      type: 'CART_ADD_ITEM',
-      payload: { ...product, quantity },
-    });
-    Navigate('/Cart');
   };
 
   return loading ? (

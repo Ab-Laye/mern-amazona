@@ -14,8 +14,9 @@ import { Store } from './Store';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
-import SignupScreen from './screens/SignUpScreen';
+/* import SignupScreen from './screens/SignUpScreen'; */
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -48,14 +49,14 @@ function App() {
                   )}
                 </Link>
                 {userInfo ? (
-                  <navDropdown title={userInfo.name} id="basic-nav-dropdown">
+                  <nav title={userInfo.name} id="basic-nav-dropdown">
                     <LinkContainer to="/profile">
-                      <navDropdown.Item>Profil utilisateur</navDropdown.Item>
+                      <b>Profil utilisateur</b>
                     </LinkContainer>
                     <LinkContainer to="/orderhistory">
-                      <navDropdown.Item>recents</navDropdown.Item>
+                      <b>recents</b>
                     </LinkContainer>
-                    <navDropdown.Divider>
+                    <div>
                       <Link
                         className="dropdown-item"
                         to="#signout"
@@ -63,8 +64,8 @@ function App() {
                       >
                         Se deconnecter
                       </Link>
-                    </navDropdown.Divider>
-                  </navDropdown>
+                    </div>
+                  </nav>
                 ) : (
                   <Link className="nav-Link" to="/signin">
                     Se Connecter
@@ -82,7 +83,8 @@ function App() {
               <Route path="/signin" element={<SigninScreen />} />
               <Route path="/shipping" element={<ShippingAddressScreen />} />
               <Route path="/payment" element={<PaymentMethodScreen />} />
-              <Route path="/signup" element={<SignupScreen />} />
+              {/*  <Route path="/signup" element={<SignupScreen />} /> */}
+              <Route path="/placeorder" element={<PlaceOrderScreen />} />
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>
