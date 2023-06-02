@@ -4,15 +4,14 @@ import { Helmet } from 'react-helmet-async';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 import ListGroup from 'react-bootstrap/ListGroup';
-import MessageBox from '../compoment/MessageBox';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/esm/Button';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
 export default function CartScreen() {
-  const Navigate = useNavigate();
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const navigate = useNavigate();
+  const { state, error, dispatch: ctxDispatch } = useContext(Store);
   const {
     cart: { cartItems },
   } = state;
@@ -33,7 +32,7 @@ export default function CartScreen() {
     ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
   const checkoutHandler = () => {
-    Navigate('/signin?redirect=/shipping');
+    navigate('/signin?redirect=/shipping');
   };
 
   return (
@@ -45,9 +44,7 @@ export default function CartScreen() {
       <Row>
         <Col md={8}>
           {cartItems.length === 0 ? (
-            <MessageBox>
-              Cart is empty. <Link to="/">Go Shopping</Link>
-            </MessageBox>
+            <div className="alert alert-danger">{error}</div>
           ) : (
             <ListGroup>
               {cartItems.map((item) => (

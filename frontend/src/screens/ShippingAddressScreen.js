@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 import { Helmet } from 'react-helmet-async';
-import { Form, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
+import Form from 'react-bootstrap/Form';
+
 import CheckoutSteps from '../compoment/CheckoutSteps';
 
 export default function ShippingAddressScreen() {
@@ -99,14 +101,14 @@ export default function ShippingAddressScreen() {
             />
           </Form.Group>
           <div>
-            <Button variant="primary" type="submi">
+            <Button variant="primary" type="submit">
               continue
             </Button>
           </div>
         </Form>
       </div>
       <h1 className="my-3">Shipping Address</h1>
-      <Form onSubmit={submitHandler}>
+      <Form>
         <Form.Group className="mu-3" controlId="fullName">
           <Form.Label>full Name</Form.Label>
           <Form.Control
@@ -148,7 +150,7 @@ export default function ShippingAddressScreen() {
           />
         </Form.Group>
         <div>
-          <Button variant="primary" type="submi">
+          <Button variant="primary" type="submit" onClick={submitHandler}>
             continue
           </Button>
         </div>

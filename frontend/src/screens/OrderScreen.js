@@ -62,7 +62,7 @@ export default function OrderScreen() {
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
-    <MessageBox variant="danger">{error}</MessageBox>
+    <div className="alert alert-danger">{error}</div>
   ) : (
     <div>
       <Helmet>

@@ -55,3 +55,6 @@ img-thumbbnail {
   border-bottom: 0.2rem solid #f08000;
   color: #f08000;
 }
+.navDropdown:hover {
+  color: white;
+}
