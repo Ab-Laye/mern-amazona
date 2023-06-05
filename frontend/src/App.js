@@ -9,7 +9,6 @@ import Nav from 'react-bootstrap/Nav';
 import Badge from 'react-bootstrap/Badge';
 import Container from 'react-bootstrap/Container';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import LinkContainer from 'react-router-bootstrap/LinkContainer';
 import { Store } from './Store';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
@@ -25,6 +24,8 @@ import axios from 'axios';
 import { getError } from './Utils';
 import SearchBox from './compoment/SearchBox';
 import Button from 'react-bootstrap/Button';
+import SearchScreen from './screens/SearchScreen';
+import { LinkContainer } from 'react-router-bootstrap';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -129,7 +130,10 @@ function App() {
             {categories.map((category) => (
               <Nav.Item key={category}>
                 <LinkContainer
-                  to={`/search?category=${category}`}
+                  to={{
+                    pathname: '/search',
+                    search: `?category=${category}`,
+                  }}
                   onClick={() => setSidebarIsOpen(false)}
                 >
                   <Nav.Link>{category}</Nav.Link>
@@ -143,6 +147,7 @@ function App() {
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
+              <Route path="/search" element={<SearchScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
               <Route path="/shipping" element={<ShippingAddressScreen />} />
               <Route path="/signup" element={<SignupScreen />} />

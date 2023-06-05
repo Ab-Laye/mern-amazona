@@ -19,7 +19,9 @@ export default function SigninScreen() {
   const [password, setPassword] = useState('');
 
   const { state, dispatch: ctxdispatch } = useContext(Store);
-  const { userInfo } = state;
+  const userInfo = localStorage.getItem('userInfo')
+    ? JSON.parse(localStorage.getItem('userInfo'))
+    : null;
 
   const submitHandler = async (e) => {
     e.preventDefault();
