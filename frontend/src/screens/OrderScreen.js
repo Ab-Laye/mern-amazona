@@ -100,7 +100,8 @@ export default function OrderScreen() {
                   Paid at {order.paidAt}
                 </MessageBox>
               ) : (
-                <MessageBox variant="danger">Not Paid</MessageBox>
+                /*                 <MessageBox variant="danger">Not Paid</MessageBox>
+                 */ <div className="alert alert-danger">Not paid</div>
               )}
             </Card.Body>
           </Card>
