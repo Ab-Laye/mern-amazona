@@ -33,9 +33,7 @@ import DashboardScreen from './screens/DashboardScreen';
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart } = state;
-  const userInfo = localStorage.getItem('userInfo')
-    ? JSON.parse(localStorage.getItem('userInfo'))
-    : null;
+  const { userInfo } = state;
 
   const signoutHandler = () => {
     ctxDispatch({ type: 'USER_SIGNOUT' });

@@ -24,6 +24,50 @@ orderRouter.post(
 );
 
 orderRouter.get(
+  '/summary',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const orders = await Order.aggregate([
+      {
+        Dtgroup: {
+          _id: null,
+          numOrders: { $sum: 1 },
+          totalSales: { $sum: '$totalPrice' },
+        },
+      },
+    ]);
+    const users = await User.aggregate([
+      {
+        Dtgroup: {
+          _id: null,
+          numUsers: { $sum: 1 },
+        },
+      },
+    ]);
+    const dailyOrders = await Order.aggregate([
+      {
+        Dtgroup: {
+          _id: { $dateToString: { format: '%Y-%m-%d', date: 'DtcreatedAt' } },
+          orders: { Dtsum: 1 },
+          sales: { Dtsum: 'DttotalPrice' },
+        },
+      },
+      { Dtsort: { _id: 1 } },
+    ]);
+    const productCategories = await Product.aggregate([
+      {
+        Dtgroup: {
+          _id: 'Dtcategory',
+          count: { $sum: 1 },
+        },
+      },
+    ]);
+    res.send({ users, orders, dailyOrders, productCategories });
+  })
+);
+
+orderRouter.get(
   '/mine',
   isAuth,
   expressAsyncHandler(async (req, res) => {
