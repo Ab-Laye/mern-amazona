@@ -34,7 +34,7 @@ export default function CartScreen() {
   const checkoutHandler = () => {
     navigate('/signin?redirect=/shipping');
   };
-
+  const storage = 'http://localhost:5000/';
   return (
     <div>
       <Helmet>
@@ -52,7 +52,7 @@ export default function CartScreen() {
                   <Row className="align-items-center">
                     <Col md={4}>
                       <img
-                        src={item.images}
+                        src={storage + item.images}
                         alt={item.name}
                         className="img-fluid rounded img-thumbnail"
                       ></img>{' '}

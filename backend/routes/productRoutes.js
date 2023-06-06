@@ -43,7 +43,7 @@ productRouter.put(
       product.name = req.body.name;
       product.slug = req.body.slug;
       product.price = req.body.price;
-      product.image = req.body.image;
+      product.images = req.body.images;
       product.category = req.body.category;
       product.brand = req.body.brand;
       product.countInStock = req.body.countInStock;
@@ -60,13 +60,13 @@ productRouter.delete(
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id);
-    if (product) {
-      await product.remove();
-      res.send({ message: 'Product Deleted' });
-    } else {
+    const product = await Product.deleteOne({ _id: req.params.id });
+    /*  if (product) {
+      await product.de; */
+    res.send({ message: 'Product Deleted' });
+    /*   } else {
       res.status(404).send({ message: 'Product Not Found' });
-    }
+    } */
   })
 );
 

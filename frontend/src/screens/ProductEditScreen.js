@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
-import { Form, Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Store } from '../Store';
 import { getError } from '../Utils';
 import Container from 'react-bootstrap/Container';
 import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../compoment/LoadingBox';
-import { Button } from 'bootstrap';
 import { toast } from 'react-toastify';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -52,7 +53,7 @@ export default function ProductEditScreen() {
   const [name, setName] = useState('');
   const [slug, setSlug] = useState('');
   const [price, setPrice] = useState('');
-  const [image, setImage] = useState('');
+  const [images, setImage] = useState('');
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState('');
   const [brand, setBrand] = useState('');
@@ -66,7 +67,7 @@ export default function ProductEditScreen() {
         setName(data.name);
         setSlug(data.slug);
         setPrice(data.price);
-        setImage(data.image);
+        setImage(data.images);
         setCategory(data.category);
         setCountInStock(data.countInStock);
         setBrand(data.brand);
@@ -93,7 +94,7 @@ export default function ProductEditScreen() {
           name,
           slug,
           price,
-          image,
+          images,
           category,
           brand,
           countInStock,
@@ -129,7 +130,7 @@ export default function ProductEditScreen() {
       dispatch({ type: 'UPLOAD_SUCCESS' });
 
       toast.success('Image uploaded successfully');
-      setImage(data.secure_url);
+      setImage(data.path);
     } catch (err) {
       toast.error(getError(err));
       dispatch({ type: 'UPLOAD_FAIL', payload: getError(err) });
@@ -173,10 +174,10 @@ export default function ProductEditScreen() {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="image">
+          <Form.Group className="mb-3" controlId="images">
             <Form.Label>Image File</Form.Label>
             <Form.Control
-              value={image}
+              value={images}
               onChange={(e) => setImage(e.target.value)}
               required
             />

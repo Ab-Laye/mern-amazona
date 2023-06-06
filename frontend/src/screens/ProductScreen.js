@@ -70,7 +70,7 @@ function ProductScreen() {
       Navigate('/Cart');
     }
   };
-
+  const storage = 'http://localhost:5000/';
   return loading ? (
     <LoadingBox />
   ) : error ? (
@@ -79,7 +79,11 @@ function ProductScreen() {
     <div>
       <Row>
         <Col md={6}>
-          <img className="img-large" src={product.images} alt={product.name} />
+          <img
+            className="img-large"
+            src={storage + product.images}
+            alt={product.name}
+          />
         </Col>
         <Col md={3}>
           <ListGroup variant="flush">

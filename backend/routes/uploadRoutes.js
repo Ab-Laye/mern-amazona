@@ -6,9 +6,17 @@ import { isAdmin, isAuth } from '../utils.js';
 
 const upload = multer();
 
+import multipart from 'connect-multiparty';
+var multipartMiddleware = multipart({ uploadDir: './uploads' });
+
 const uploadRouter = express.Router();
 
-uploadRouter.post(
+uploadRouter.post('/', multipartMiddleware, function (req, res) {
+  console.log(req.files.file);
+  // don't forget to delete all req.files when done
+  res.send(req.files.file);
+});
+/* uploadRouter.post(
   '/',
   isAuth,
   isAdmin,
@@ -34,5 +42,5 @@ uploadRouter.post(
     const result = await streamUpload(req);
     res.send(result);
   }
-);
+); */
 export default uploadRouter;

@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { getError } from '../Utils';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Button } from 'bootstrap';
+import Button from 'react-bootstrap/Button';
 
 const reducer = (state, action) => {
   switch (action.type) {
