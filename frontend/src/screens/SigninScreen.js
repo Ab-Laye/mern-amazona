@@ -9,7 +9,7 @@ import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../Utils';
 
-export default function SigninScreen() {
+export default function SignInScreen() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get('redirect');
@@ -38,7 +38,7 @@ export default function SigninScreen() {
 
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect);
+      //  navigate(redirect);
     }
   }, [navigate, redirect, userInfo]);
   return (
@@ -51,6 +51,7 @@ export default function SigninScreen() {
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
+            placeholder="Mail"
             type="email"
             required
             onChange={(e) => setEmail(e.target.value)}
@@ -59,13 +60,14 @@ export default function SigninScreen() {
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
+            placeholder="Password"
             type="password"
             required
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
         <div className="mb-3">
-          <Button type="submit">Sign In</Button>
+          <Button type="submit">Login</Button>
         </div>
         <div className="mb-3">
           New customer?{' '}

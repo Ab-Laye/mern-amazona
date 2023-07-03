@@ -55,7 +55,7 @@ export default function SignupScreen() {
       <Helmet>
         <title>Sign Up</title>
       </Helmet>
-      <h1 className="my-3">Creer compte</h1>
+      <h1 className="my-3">Sign In</h1>
 
       <Form.Group className="mb-3" controlId="email">
         <Form.Label>Name</Form.Label>
@@ -85,19 +85,19 @@ export default function SignupScreen() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Comfirme Password</Form.Label>
+          <Form.Label>Comfirm Password</Form.Label>
           <Form.Control
-            type="Confirmpassword"
+            type="password"
             required
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Form.Group>
         <div className="mb-3">
-          <Button type="submit">Creer</Button>
+          <Button type="submit">Create</Button>
         </div>
         <div className="mb-3">
           Already have an count?{' '}
-          <Link to={`/signin?redirect=${redirect}`}>Se Connecter</Link>
+          <Link to={`/signin?redirect=${redirect}`}>Login</Link>
         </div>
       </Form>
     </Container>

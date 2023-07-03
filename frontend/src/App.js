@@ -11,7 +11,6 @@ import Container from 'react-bootstrap/Container';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Store } from './Store';
 import CartScreen from './screens/CartScreen';
-import SigninScreen from './screens/SigninScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 /* import SignupScreen from './screens/SignUpScreen'; */
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
@@ -19,6 +18,7 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import SignupScreen from './screens/SignUpScreen';
+
 import ProfileScreen from './screens/ProfileScreen';
 import axios from 'axios';
 import { getError } from './Utils';
@@ -34,6 +34,7 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
+import SignInScreen from './screens/SignInScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -150,7 +151,7 @@ function App() {
         >
           <Nav className="flex-column text-white w-100 p-2">
             <Nav.Item>
-              <strong>Categories</strong>
+              <strong>Category</strong>
             </Nav.Item>
             {categories.map((category) => (
               <Nav.Item key={category}>
@@ -173,7 +174,7 @@ function App() {
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/search" element={<SearchScreen />} />
-              <Route path="/signin" element={<SigninScreen />} />
+              <Route path="/signin" element={<SignInScreen />} />
               <Route path="/shipping" element={<ShippingAddressScreen />} />
               <Route path="/signup" element={<SignupScreen />} />
               <Route path="/payment" element={<PaymentMethodScreen />} />
