@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
-import { Axios } from 'axios';
+import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { Store } from '../Store';
 import { toast } from 'react-toastify';
@@ -25,12 +25,14 @@ export default function SignupScreen() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       toast.error('password do not match');
       return;
     }
     try {
-      const { data } = await Axios.post(`/api/users/signup`, {
+      const { data } = await axios.post(`/api/users/signup`, {
+        /*  shippingAdress : localStorage.getItem('shippingAdress'),
+        orderItems : localStorage.getItem('cardItems') */
         name,
         email,
         password,
@@ -53,7 +55,7 @@ export default function SignupScreen() {
       <Helmet>
         <title>Sign Up</title>
       </Helmet>
-      <h1 className="my-3">Sign Up</h1>
+      <h1 className="my-3">Creer compte</h1>
 
       <Form.Group className="mb-3" controlId="email">
         <Form.Label>Name</Form.Label>
@@ -91,7 +93,7 @@ export default function SignupScreen() {
           />
         </Form.Group>
         <div className="mb-3">
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit">Creer</Button>
         </div>
         <div className="mb-3">
           Already have an count?{' '}

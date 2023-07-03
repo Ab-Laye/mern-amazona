@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import CheckoutSteps from '../compoment/CheckoutSteps';
-import { Form, useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/esm/Button';
+import { useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
+import Form from 'react-bootstrap/Form';
+
+import Button from 'react-bootstrap/Button';
 
 export default function PaymentMethodScreen() {
   const navigate = useNavigate();
@@ -17,7 +19,8 @@ export default function PaymentMethodScreen() {
   );
 
   useEffect(() => {
-    if (!ShippingAddress.address) {
+    let st = localStorage.getItem('shippingAddress');
+    if (!st || !JSON.parse(st).address) {
       navigate('/shipping');
     }
   }, [ShippingAddress, navigate]);
@@ -28,6 +31,7 @@ export default function PaymentMethodScreen() {
     localStorage.setItem('paymentMethod', paymentMethodName);
     navigate('/placeorder');
   };
+
   return (
     <div>
       <CheckoutSteps step1 step2 step3></CheckoutSteps>

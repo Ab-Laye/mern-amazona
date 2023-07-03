@@ -5,7 +5,7 @@ import { Store } from '../Store';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { getError } from '../Utils';
-import { Button } from 'bootstrap';
+import Button from 'react-bootstrap/Button';
 
 const reducer = (state, action) => {
   switch (action.type) {

@@ -7,7 +7,7 @@ const orderSchema = new mongoose.Schema(
         slug: { type: String, required: true },
         name: { type: String, required: true },
         quantity: { type: Number, required: true },
-        image: { type: String, required: true },
+        images: { type: String, required: true },
         price: { type: Number, required: true },
         product: {
           type: mongoose.Schema.Types.ObjectId,
@@ -17,11 +17,11 @@ const orderSchema = new mongoose.Schema(
       },
     ],
     shippingAddress: {
-      fullName: { type: String, required: true },
-      address: { type: String, required: true },
-      city: { type: String, required: true },
-      postalCode: { type: String, required: true },
-      country: { type: String, required: true },
+      fullName: { type: String, required: false },
+      address: { type: String, required: false },
+      city: { type: String, required: false },
+      postalCode: { type: String, required: false },
+      country: { type: String, required: false },
     },
     paymentMethod: { type: String, required: true },
     paymentResult: {

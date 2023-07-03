@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 import LoadingBox from '../compoment/LoadingBox';
-import MessageBox from '../compoment/MessageBox';
 import { Store } from '../Store';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { getError } from '../Utils';
 import { Helmet } from 'react-helmet-async';
-import Row from 'react-bootstrap/esm/Row';
+import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { toast } from 'react-toastify';
-import Button from 'react-bootstrap/esm/Button';
+import Button from 'react-bootstrap/Button';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -57,6 +56,7 @@ export default function OrderScreen() {
     loadingPay: false,
   });
   useEffect(() => {
+    console.log('t');
     const fetchOrder = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
@@ -122,11 +122,11 @@ export default function OrderScreen() {
                 ,{order.shippingAddress.country}
               </Card.Text>
               {order.isDelivered ? (
-                <MessageBox variant="success">
+                <div className="alert alert-danger">
                   Delivered at {order.deliveredAt}
-                </MessageBox>
+                </div>
               ) : (
-                <MessageBox variant="danger">Not Delivered</MessageBox>
+                <div className="alert alert-danger">Not Delivered</div>
               )}
             </Card.Body>
           </Card>
@@ -137,9 +137,7 @@ export default function OrderScreen() {
                 <strong>Method:</strong> {order.paymentMethod}
               </Card.Text>
               {order.isPaid ? (
-                <MessageBox variant="success">
-                  Paid at {order.paidAt}
-                </MessageBox>
+                <div className="alert alert-danger">Paid at {order.paidAt}</div>
               ) : (
                 /*                 <MessageBox variant="danger">Not Paid</MessageBox>
                  */ <div className="alert alert-danger">Not paid</div>
@@ -151,12 +149,12 @@ export default function OrderScreen() {
             <Card.Body>
               <Card.Title>Items</Card.Title>
               <ListGroup variant="flush">
-                {order.orderItems.map((item) => (
+                {order.orderitems.map((item) => (
                   <ListGroup.Item key={item._id}>
                     <Row className="align-items-center">
                       <Col md={6}>
                         <img
-                          src={item.image}
+                          src={item.images}
                           alt={item.name}
                           className="img-fluid rounded img-thumbnail"
                         ></img>{' '}

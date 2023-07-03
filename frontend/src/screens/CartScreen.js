@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { Store } from '../Store';
 import { Helmet } from 'react-helmet-async';
-import Col from 'react-bootstrap/esm/Col';
-import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/esm/Button';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
@@ -79,7 +79,7 @@ export default function CartScreen() {
                         <i className="fas fa-plus-circle"></i>
                       </Button>
                     </Col>
-                    <Col md={3}>Dt{item.price}</Col>
+                    <Col md={3}>{item.price}Dt</Col>
                     <Col md={2}>
                       <Button
                         onClick={() => removeItemHandler(item)}
@@ -101,8 +101,8 @@ export default function CartScreen() {
                 <ListGroup.Item>
                   <h3>
                     Total ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
-                    elements) : Dt
-                    {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
+                    elements):
+                    {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}Dt
                   </h3>
                 </ListGroup.Item>
                 <ListGroup.Item>
